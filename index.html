@@ -3,52 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Скачать VPN Клиент</title>
+    <title>Happ - Загрузка клиента</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f0f2f5;
+            background-color: #ffffff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            color: #333;
         }
         .container {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 90%;
-            width: 350px;
+            max-width: 800px;
+            width: 100%;
         }
-        h1 { font-size: 24px; margin-bottom: 10px; }
-        p { color: #666; font-size: 15px; margin-bottom: 25px; line-height: 1.5; }
-        .download-btn {
-            display: inline-block;
-            background-color: #0088cc;
-            color: white;
-            padding: 14px 24px;
-            font-size: 18px;
-            font-weight: bold;
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+        .description {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        th, td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #444;
+        }
+        a {
+            color: #0366d6;
             text-decoration: none;
-            border-radius: 8px;
-            width: 80%;
-            transition: background 0.3s;
+            display: inline-block;
+            margin-bottom: 5px;
         }
-        .download-btn:hover { background-color: #006699; }
-        .footer { margin-top: 20px; font-size: 12px; color: #999; }
+        a:hover {
+            text-decoration: underline;
+        }
+        .os-icon {
+            font-weight: bold;
+            color: #222;
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>VPN Клиент Happ</h1>
-        <p>Безопасный доступ к интернету. Нажмите кнопку ниже, чтобы скачать последнюю версию приложения (Android).</p>
-        <a href="happ.apk" class="download-btn">⬇ Скачать .APK</a>
-        <div class="footer">Обновляется автоматически</div>
+        <h1>Happ - Proxy Utility</h1>
+        <p class="description">
+            Кроссплатформенное приложение для безопасной и удобной работы с прокси-серверами. 
+            Выберите вашу операционную систему для загрузки:
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Платформа</th>
+                    <th>Ссылки для скачивания</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="os-icon">🍏 iOS / iPhone</td>
+                    <td>
+                        <a href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215">App Store (Global) ↗</a><br>
+                        <a href="https://apps.apple.com/ru/app/happ-proxy-utility-plus/id6746188973">App Store (Rus) ↗</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="os-icon">🤖 Android</td>
+                    <td>
+                        <a href="https://github.com/Happ-proxy/happ-android/releases/latest/download/Happ.apk">Download APK (Прямая ссылка) ↗</a><br>
+                        <a href="https://play.google.com/store/apps/details?id=com.happproxy">Google Play ↗</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="os-icon">💻 Windows</td>
+                    <td>
+                        <a href="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe">Windows x64 ↗</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+
 </body>
 </html>
