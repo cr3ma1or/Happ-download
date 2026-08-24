@@ -6,18 +6,19 @@
     <title>Настройка VPN - Happ</title>
     <style>
         :root {
-            --primary: #007AFF;
-            --primary-hover: #0056b3;
-            --bg-color: #f5f5f7;
-            --card-bg: #ffffff;
-            --text-main: #1d1d1f;
-            --text-muted: #86868b;
-            --border: #e5e5ea;
+            --bg-main: #1e1e1e;
+            --bg-card: #2a2a2a;
+            --bg-card-hover: #333333;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #3d3d3d;
+            --accent-bg: #ffffff;
+            --accent-text: #000000;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
+            background-color: var(--bg-main);
             color: var(--text-main);
             margin: 0;
             padding: 20px;
@@ -28,33 +29,33 @@
         }
 
         .container {
-            background-color: var(--card-bg);
-            max-width: 500px;
+            max-width: 540px;
             width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            padding: 40px 30px;
             box-sizing: border-box;
-            text-align: center;
         }
 
-        h1 {
-            font-size: 24px;
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-weight: 600;
+        .header-logo {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
         }
 
-        p.subtitle {
+        .header-logo span {
+            font-weight: 400;
             color: var(--text-muted);
-            margin-bottom: 30px;
-            font-size: 15px;
-            line-height: 1.4;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 16px;
+            line-height: 1.5;
         }
 
         .step {
             display: none;
-            animation: fadeIn 0.3s ease-in-out;
+            animation: fadeIn 0.4s ease-in-out;
         }
 
         .step.active {
@@ -66,112 +67,172 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Кнопки выбора */
-        .btn-option {
+        /* Сетка карточек в стиле сайта Happ */
+        .grid-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .card-btn {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .card-btn:hover {
+            background-color: var(--bg-card-hover);
+            border-color: #555;
+            transform: translateY(-2px);
+        }
+
+        .card-btn .icon-wrapper {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
-            padding: 16px;
-            margin-bottom: 15px;
-            background-color: #fff;
-            border: 2px solid var(--border);
-            border-radius: 14px;
-            font-size: 17px;
-            font-weight: 500;
-            color: var(--text-main);
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: inherit;
+            font-size: 20px;
+            margin-bottom: 16px;
+            background-color: rgba(255, 255, 255, 0.03);
         }
 
-        .btn-option:hover {
-            border-color: var(--primary);
-            background-color: rgba(0, 122, 255, 0.05);
+        .card-btn .title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
         }
 
-        .btn-option .icon {
-            font-size: 24px;
-            margin-right: 12px;
+        .card-btn .desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0;
         }
 
         /* Главная кнопка действия (Скачать) */
         .btn-primary {
-            display: inline-block;
-            background-color: var(--primary);
-            color: #fff;
+            display: block;
+            background-color: var(--accent-bg);
+            color: var(--accent-text);
             text-decoration: none;
-            padding: 14px 28px;
+            padding: 16px 28px;
             border-radius: 12px;
             font-size: 16px;
             font-weight: 600;
-            margin: 20px 0;
+            margin: 0 0 24px 0;
+            text-align: center;
             transition: background-color 0.2s;
             width: 100%;
             box-sizing: border-box;
         }
 
         .btn-primary:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .btn-secondary {
-            display: inline-block;
-            background-color: #e5e5ea;
-            color: #333;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 500;
-            margin-top: 10px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        
-        .btn-secondary:hover {
-            background-color: #d1d1d6;
+            background-color: #e0e0e0;
         }
 
         /* Блок инструкции */
         .guide-box {
-            background-color: #f9f9f9;
-            border-radius: 14px;
-            padding: 20px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
             text-align: left;
-            margin-bottom: 25px;
-            border: 1px solid var(--border);
+            margin-bottom: 24px;
         }
 
         .guide-step {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 36px;
         }
 
         .guide-step:last-child {
             margin-bottom: 0;
         }
 
+        .guide-step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: -2px;
+            width: 24px;
+            height: 24px;
+            background-color: var(--border-color);
+            color: var(--text-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
         .guide-step strong {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
+            font-size: 16px;
             color: var(--text-main);
         }
 
         .guide-step p {
             margin: 0;
-            color: #444;
+            color: var(--text-muted);
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.6;
+        }
+
+        .guide-step p i {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-style: normal;
+            font-family: monospace;
+            font-size: 13px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
         }
 
         .back-link {
             color: var(--text-muted);
-            text-decoration: underline;
+            text-decoration: none;
             cursor: pointer;
             font-size: 14px;
-            display: inline-block;
-            margin-top: 20px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--text-main);
+        }
+
+        .extra-link {
+            color: var(--text-muted);
+            font-size: 14px;
+            text-decoration: underline;
+            text-decoration-color: var(--border-color);
+            text-align: center;
+            display: block;
+            margin-bottom: 24px;
+            transition: color 0.2s;
+        }
+        
+        .extra-link:hover {
+            color: var(--text-main);
         }
     </style>
 </head>
@@ -181,48 +242,69 @@
         
         <!-- ЭКРАН 1: Выбор ОС -->
         <div id="step-os" class="step active">
-            <h1>Настройка VPN</h1>
-            <p class="subtitle">Выберите устройство, на которое хотите установить профиль</p>
+            <div class="header-logo">Happ <span>Proxy Utility</span></div>
+            <p class="subtitle">Выберите платформу для загрузки клиента и получения инструкций по настройке.</p>
             
-            <button class="btn-option" onclick="goToStep('step-region')">
-                <span class="icon">🍏</span> iPhone / iPad
-            </button>
-            <button class="btn-option" onclick="showGuide('android')">
-                <span class="icon">🤖</span> Android
-            </button>
-            <button class="btn-option" onclick="showGuide('windows')">
-                <span class="icon">💻</span> Windows
-            </button>
+            <div class="grid-options">
+                <div class="card-btn" onclick="goToStep('step-region')">
+                    <div class="icon-wrapper">🍏</div>
+                    <div class="title">Apple iOS</div>
+                    <p class="desc">Настройка для iPhone и iPad</p>
+                </div>
+                
+                <div class="card-btn" onclick="showGuide('android')">
+                    <div class="icon-wrapper">🤖</div>
+                    <div class="title">Android</div>
+                    <p class="desc">Смартфоны и планшеты на Android</p>
+                </div>
+                
+                <div class="card-btn" onclick="showGuide('windows')">
+                    <div class="icon-wrapper">💻</div>
+                    <div class="title">Windows</div>
+                    <p class="desc">Десктопный клиент для ПК (x64)</p>
+                </div>
+            </div>
         </div>
 
         <!-- ЭКРАН 2: Выбор региона (только для iOS) -->
         <div id="step-region" class="step">
-            <h1>Регион App Store</h1>
-            <p class="subtitle">К какой стране привязан ваш Apple ID?</p>
+            <div class="header-logo" style="font-size: 24px;">Регион <span>App Store</span></div>
+            <p class="subtitle">Для выдачи правильной ссылки укажите, к какой стране привязан ваш Apple ID.</p>
             
-            <button class="btn-option" onclick="showGuide('ios-ru')">
-                🇷🇺 Россия
-            </button>
-            <button class="btn-option" onclick="showGuide('ios-global')">
-                🌍 Другая страна
-            </button>
+            <div class="grid-options">
+                <div class="card-btn" onclick="showGuide('ios-ru')">
+                    <div class="icon-wrapper">🇷🇺</div>
+                    <div class="title">Россия</div>
+                    <p class="desc">Российский аккаунт App Store</p>
+                </div>
+                
+                <div class="card-btn" onclick="showGuide('ios-global')">
+                    <div class="icon-wrapper">🌍</div>
+                    <div class="title">Другая страна</div>
+                    <p class="desc">Зарубежный аккаунт App Store</p>
+                </div>
+            </div>
 
-            <span class="back-link" onclick="goToStep('step-os')">← Назад к выбору устройства</span>
+            <div class="nav-links">
+                <span class="back-link" onclick="goToStep('step-os')">← Назад к выбору платформы</span>
+            </div>
         </div>
 
         <!-- ЭКРАН 3: Инструкция и скачивание -->
         <div id="step-guide" class="step">
-            <h1 id="guide-title">Установка</h1>
-            <p class="subtitle">Выполните 3 простых шага</p>
+            <div class="header-logo" id="guide-title" style="font-size: 24px;">Установка</div>
+            <p class="subtitle">Выполните 3 простых шага для подключения.</p>
 
             <a href="#" id="download-btn" class="btn-primary" target="_blank">Скачать приложение</a>
-            <div id="extra-download" style="margin-bottom: 20px;"></div> <!-- Для доп. кнопок Android -->
+            <div id="extra-download"></div>
 
             <div class="guide-box" id="guide-content">
                 <!-- Сюда подставится текст через JS -->
             </div>
 
-            <button class="btn-secondary" onclick="goToStep('step-os')">Начать заново</button>
+            <div class="nav-links">
+                <span class="back-link" onclick="goToStep('step-os')">← Начать заново</span>
+            </div>
         </div>
 
     </div>
@@ -240,91 +322,85 @@
         // Тексты инструкций
         const guides = {
             ios: `
-                <div class="guide-step">
-                    <strong>1. Скопируйте ключ</strong>
-                    <p>Найдите в письме длинную ссылку, которая начинается на <i>crypt5://</i>, и скопируйте её.</p>
+                <div class="guide-step" data-step="1">
+                    <strong>Скопируйте ключ</strong>
+                    <p>Найдите в сообщении ссылку, которая начинается на <i>happ://crypt5/</i>, и полностью скопируйте её.</p>
                 </div>
-                <div class="guide-step">
-                    <strong>2. Добавьте в приложение</strong>
-                    <p>Откройте скачанное приложение Happ. Нажмите на значок <b>«+»</b> в правом верхнем углу и выберите <b>«Импорт из буфера обмена»</b>. Подписка добавится автоматически.</p>
+                <div class="guide-step" data-step="2">
+                    <strong>Добавьте в приложение</strong>
+                    <p>Откройте скачанное приложение Happ. Нажмите на значок <b>«+»</b> в правом верхнем углу и выберите <b>«Импорт из буфера обмена»</b>.</p>
                 </div>
-                <div class="guide-step">
-                    <strong>3. Подключитесь</strong>
-                    <p>Выберите сервер в списке и нажмите круглую кнопку подключения. При первом запуске iPhone попросит разрешение на добавление конфигурации VPN — нажмите <b>«Разрешить»</b> и введите пароль от телефона.</p>
+                <div class="guide-step" data-step="3">
+                    <strong>Подключитесь</strong>
+                    <p>Выберите сервер в списке и нажмите круглую кнопку подключения. Если появится запрос системы безопасности Apple — нажмите <b>«Разрешить»</b>.</p>
                 </div>
             `,
             android: `
-                <div class="guide-step">
-                    <strong>1. Скопируйте ключ</strong>
-                    <p>Найдите в письме длинную ссылку, которая начинается на <i>crypt5://</i>, и скопируйте её.</p>
+                <div class="guide-step" data-step="1">
+                    <strong>Скопируйте ключ</strong>
+                    <p>Найдите в сообщении ссылку, которая начинается на <i>happ://crypt5/</i>, и полностью скопируйте её.</p>
                 </div>
-                <div class="guide-step">
-                    <strong>2. Добавьте в приложение</strong>
+                <div class="guide-step" data-step="2">
+                    <strong>Добавьте в приложение</strong>
                     <p>Откройте приложение Happ. Нажмите на значок <b>«+»</b> и выберите <b>«Импорт из буфера обмена»</b>.</p>
                 </div>
-                <div class="guide-step">
-                    <strong>3. Подключитесь</strong>
-                    <p>Выберите сервер в списке и нажмите кнопку подключения. Разрешите приложению создать VPN-соединение, если появится запрос системы.</p>
+                <div class="guide-step" data-step="3">
+                    <strong>Подключитесь</strong>
+                    <p>Выберите добавленный сервер и нажмите кнопку подключения. Подтвердите запрос на создание VPN-соединения.</p>
                 </div>
             `,
             windows: `
-                <div class="guide-step">
-                    <strong>1. Установите программу</strong>
-                    <p>Скачайте .exe файл по кнопке выше и установите программу на ПК.</p>
+                <div class="guide-step" data-step="1">
+                    <strong>Установите программу</strong>
+                    <p>Скачайте клиент по кнопке выше и установите его на ваш ПК.</p>
                 </div>
-                <div class="guide-step">
-                    <strong>2. Добавьте ключ</strong>
-                    <p>Скопируйте ключ (ссылку <i>crypt5://</i>) из письма. Откройте программу, нажмите кнопку <b>«+»</b> и импортируйте ключ из буфера обмена.</p>
+                <div class="guide-step" data-step="2">
+                    <strong>Добавьте ключ</strong>
+                    <p>Скопируйте ключ <i>happ://crypt5/</i> из сообщения. Откройте программу, нажмите кнопку <b>«+»</b> и импортируйте ключ.</p>
                 </div>
-                <div class="guide-step">
-                    <strong>3. Подключение</strong>
-                    <p>Выберите добавленный сервер и нажмите кнопку подключения. Значок программы в трее поменяет цвет.</p>
+                <div class="guide-step" data-step="3">
+                    <strong>Подключитесь</strong>
+                    <p>Выберите добавленный сервер и нажмите кнопку подключения. Значок в системном трее изменит цвет.</p>
                 </div>
             `
         };
 
-        // Функция переключения экранов
         function goToStep(stepId) {
             document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
             document.getElementById(stepId).classList.add('active');
         }
 
-        // Функция генерации финального экрана
         function showGuide(platform) {
             const btn = document.getElementById('download-btn');
             const extraDiv = document.getElementById('extra-download');
             const content = document.getElementById('guide-content');
             const title = document.getElementById('guide-title');
 
-            extraDiv.innerHTML = ''; // Очищаем доп. кнопки
-            btn.style.display = 'inline-block';
-
+            extraDiv.innerHTML = '';
+            
             if (platform === 'ios-ru') {
-                title.innerText = 'Настройка на iPhone (РФ)';
+                title.innerHTML = 'iOS <span>(App Store РФ)</span>';
                 btn.href = links.iosRu;
-                btn.innerText = 'Скачать из App Store (Ru)';
+                btn.innerText = 'Скачать из App Store';
                 content.innerHTML = guides.ios;
             } 
             else if (platform === 'ios-global') {
-                title.innerText = 'Настройка на iPhone (Мир)';
+                title.innerHTML = 'iOS <span>(App Store Мир)</span>';
                 btn.href = links.iosGlobal;
-                btn.innerText = 'Скачать из App Store (Global)';
+                btn.innerText = 'Скачать из App Store';
                 content.innerHTML = guides.ios;
             } 
             else if (platform === 'android') {
-                title.innerText = 'Настройка на Android';
+                title.innerHTML = 'Android <span>клиент</span>';
                 btn.href = links.androidPlay;
                 btn.innerText = 'Скачать из Google Play';
-                
-                // Добавляем прямую ссылку на APK
-                extraDiv.innerHTML = `<a href="${links.androidApk}" style="color: #666; font-size: 14px; text-decoration: underline;">Или скачать APK напрямую</a>`;
-                
+                extraDiv.innerHTML = `<a href="${links.androidApk}" class="extra-link">или скачать .APK напрямую</a>`;
                 content.innerHTML = guides.android;
             } 
             else if (platform === 'windows') {
-                title.innerText = 'Настройка на Windows';
+                title.innerHTML = 'Windows <span>x64</span>';
                 btn.href = links.windows;
-                btn.innerText = 'Скачать Windows x64';
+                btn.innerText = 'Скачать для Windows';
                 content.innerHTML = guides.windows;
             }
 
